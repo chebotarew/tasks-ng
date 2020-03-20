@@ -93,15 +93,15 @@ describe('[Moдуль 5] Один продукт', () => {
     expect(priceNode.textContent.trim()).toEqual(`₽${price.toString()}.00`);
   });
 
-  // it('тег с селектором .description-text должен правильно интерполировать description', () => {
-  //   (component as any).product$ = of(product);
-  //   fixture.detectChanges();
-  //   const descriptionEL = fixture.debugElement.query(By.css('.product-title'));
-  //   expect(descriptionEL).toBeTruthy();
-  //   const { description } = product;
-  //   const [{ nativeNode: titleNode }] = descriptionEL.childNodes;
-  //   expect(titleNode.textContent.trim()).toEqual(description);
-  // });
+  it('тег с селектором .product-description должен правильно интерполировать description', () => {
+    (component as any).product$ = of(product);
+    fixture.detectChanges();
+    const descriptionEL = fixture.debugElement.query(By.css('.main-cont-description-descr p'));
+    expect(descriptionEL).toBeTruthy();
+    const { description } = product;
+    const [{ nativeNode: titleNode }] = descriptionEL.childNodes;
+    expect(titleNode.textContent.trim()).toEqual(description);
+  });
 
   it('клик на иконку "Добавить в корзину" должен вызывать метод addProduct()', () => {
     (component as any).product$ = of(product);
@@ -120,11 +120,11 @@ describe('[Moдуль 5] Один продукт', () => {
   });
 
   // it('проверка на правильное значение поля feedback-rate', () => {
-  //   (component as any).feedback$ = of(feedback);
+  //   (component as any).product$ = of(product);
   //   fixture.detectChanges();
   //   const feedbackRateEL = fixture.debugElement.query(By.css('.feedback-rate'));
   //   expect(feedbackRateEL).toBeTruthy();
-  //   const { rateControl } = feedback;
+  //   const { rateControl } = product;
   //   const [{ nativeNode: titleNode }] = feedbackRateEL.childNodes;
   //   expect(titleNode.textContent.trim()).toEqual(rateControl);
   // });
