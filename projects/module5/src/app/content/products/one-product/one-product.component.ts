@@ -11,7 +11,6 @@ import { IProduct } from 'projects/module1/src/mocks/products';
 })
 export class OneProductComponent implements OnInit {
   public product$!: Observable<IProduct>;
-  public feedback$: any;
   public productId!: string;
   constructor(private route: ActivatedRoute, private productsService: ProductsService) {}
 
