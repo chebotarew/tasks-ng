@@ -44,7 +44,7 @@ describe('[Moдуль 5] Один продукт', () => {
     (component as any).feedback$ = of(feedback);
     fixture.detectChanges();
     spyOn(component as any, 'addProduct').and.callThrough();
-    addToCartSpy = spyOn(component.addToCart, 'emit').and.callThrough();
+    addToCartSpy = spyOn((component as any).addToCart, 'emit').and.callThrough();
   });
   it('компонент должен иметь метод addProduct и Output свойства addToCart', () => {
     expect((component as any).addToCart).toBeTruthy();
@@ -108,8 +108,8 @@ describe('[Moдуль 5] Один продукт', () => {
     fixture.detectChanges();
     const icon = fixture.debugElement.query(By.css('.btn-icon'));
     icon.triggerEventHandler('click', null);
-    expect(component.addProduct).toHaveBeenCalledBefore(addToCartSpy);
-    expect(component.addToCart.emit).toHaveBeenCalled();
+    expect((component as any).addProduct).toHaveBeenCalledBefore(addToCartSpy);
+    expect((component as any).addToCart.emit).toHaveBeenCalled();
   });
 
   it('должен включать в себя компонент app-star-rating ', () => {
