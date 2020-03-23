@@ -12,7 +12,9 @@ export class ProductsComponent implements OnInit {
   public products: IProduct[] = [];
   public products$!: Observable<IProduct[]>;
   private pageSequence$$ = new Subject();
-  constructor(private productsService: ProductsService, private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private productsService: ProductsService,
+    private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
     this.products$ = this.productsService.getProducts();

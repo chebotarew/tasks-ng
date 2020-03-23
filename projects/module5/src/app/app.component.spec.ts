@@ -1,6 +1,6 @@
 import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './header/header.component';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { By } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -90,10 +90,22 @@ describe('[Moдуль 5] Роутер', () => {
     router.initialNavigation();
   });
 
-  // it('navigate to "**" redirects you to products', fakeAsync(() => {
-  //   // router.navigate(['']).then(() => {
-  //   //   expect(location.pathname).toBe('products');
-  //   const navigateSpy = spyOn(router, 'navigate');
-  //   expect(navigateSpy).toHaveBeenCalledWith(['/products']);
-  // }));
+  xit('navigate to "**" redirects you to products', fakeAsync(() => {
+    const navigateSpy = spyOn(router, 'navigate');
+    expect(navigateSpy).toHaveBeenCalledWith(['/products']);
+  }));
+  xit('path "" redirects you to products', fakeAsync(() => {
+    const navigateSpy = spyOn(router, 'navigate');
+    expect(navigateSpy).toHaveBeenCalledWith(['/products']);
+  }));
+  xit('path "products" imports ProductsModule', fakeAsync(() => {
+    router.navigate(['']).then(() => {
+      expect(location.pathname).toBe('products');
+    });
+  }));
+  xit('path "cart" imports CartModule', fakeAsync(() => {
+    router.navigate(['']).then(() => {
+      expect(location.pathname).toBe('cart');
+    });
+  }));
 });

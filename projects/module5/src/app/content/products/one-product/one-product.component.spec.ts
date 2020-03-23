@@ -119,13 +119,13 @@ describe('[Moдуль 5] Один продукт', () => {
     expect(starRatingComponent).toBeTruthy();
   });
 
-  // it('проверка на правильное значение поля feedback-rate', () => {
-  //   (component as any).product$ = of(product);
-  //   fixture.detectChanges();
-  //   const feedbackRateEL = fixture.debugElement.query(By.css('.feedback-rate'));
-  //   expect(feedbackRateEL).toBeTruthy();
-  //   const { rateControl } = product;
-  //   const [{ nativeNode: titleNode }] = feedbackRateEL.childNodes;
-  //   expect(titleNode.textContent.trim()).toEqual(rateControl);
-  // });
+  xit('проверка на правильное значение поля feedback-rate', () => {
+    (component as any).product$ = of(product);
+    fixture.detectChanges();
+    const feedbackRateEL = fixture.debugElement.query(By.css('.feedback-rate'));
+    expect(feedbackRateEL).toBeTruthy();
+    // const { rateControl } = product;
+    // const [{ nativeNode: titleNode }] = feedbackRateEL.childNodes;
+    // expect(titleNode.textContent.trim()).toEqual(rateControl);
+  });
 });
