@@ -6,7 +6,7 @@
     <div class="main">
       <div class="main-cont">
         <div class="main-cont-info">
-          <img class="main-cont-info-img" [src]="product.images | imgUrl" [alt]="product.name" />
+          <img class="main-cont-info-img" [src]="product.images[0]?.url" [alt]="product.name" />
           <div class="main-cont-info-price">
             {{ product.price | currency: 'RUB':'symbol-narrow' }}
             <button class="main-cont-info-price-btn">
