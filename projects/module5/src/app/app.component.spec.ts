@@ -1,6 +1,6 @@
 import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './header/header.component';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { By } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -12,6 +12,9 @@ import { ImgUrlPipe } from './shared/pipes/img-url.pipe';
 import { InterceptorService } from './shared/services/interceptor.service';
 import { AppRoutingModule } from './app-routing.module';
 import { StarRatingComponent } from './shared/components/star-rating/star-rating.component';
+import { product } from 'projects/module1/src/mocks/products';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('[Modуль 5] Общие тесты приложения', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -55,4 +58,39 @@ describe('[Modуль 5] Общие тесты приложения', () => {
     ] = subTitle.childNodes;
     expect(textContent.trim()).toContain('5. Навигация в приложении');
   });
+});
+
+describe('[Moдуль 5] Пайпы', () => {
+  let pipe: ImgUrlPipe;
+  beforeEach(() => {
+    pipe = new ImgUrlPipe();
+  });
+  it('существование метода transform', () => {
+    expect((pipe as any).transform).toBeTruthy();
+  });
+  it('transform должен правильно преобразовывать изображение в ссылку', () => {
+    expect((pipe as any).transform((product as any).images)).toBe((product as any).images[0]?.url);
+  });
+});
+describe('Router: App', () => {
+  let location: Location;
+  let router: Router;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
+      declarations: [AppComponent],
+    });
+
+    router = TestBed.inject(Router);
+    location = TestBed.inject(Location);
+
+    router.initialNavigation();
+  });
+
+  it('navigate to "**" redirects you to products', fakeAsync(() => {
+    router.navigate(['']).then(() => {
+      expect(location.pathname).toBe('products');
+    });
+  }));
 });
