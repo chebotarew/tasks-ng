@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
-describe('[Moуль 5] Рейтинг продукта', () => {
+describe('[Moдуль 5] Рейтинг продукта', () => {
   let fixture: ComponentFixture<StarRatingComponent>;
   let component: StarRatingComponent;
   beforeEach(async(() => {
