@@ -1,6 +1,6 @@
 import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './header/header.component';
-import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { By } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -13,10 +13,8 @@ import { InterceptorService } from './shared/services/interceptor.service';
 import { AppRoutingModule } from './app-routing.module';
 import { StarRatingComponent } from './shared/components/star-rating/star-rating.component';
 import { product } from 'projects/module1/src/mocks/products';
-import { Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
-import { ProductsModule } from './content/products/products.module';
-import { CartModule } from './content/cart/cart.module';
+import {  ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs/internal/observable/of';
 
 describe('[Modуль 5] Общие тесты приложения', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -75,37 +73,57 @@ describe('[Moдуль 5] Пайпы', () => {
   });
 });
 describe('[Moдуль 5] Роутер', () => {
-  let router: Router;
+  // beforeEach(() => {
+  //   TestBed.configureTestingModule({
+  //     imports: [RouterTestingModule],
+  //     declarations: [AppComponent],
+  //     providers: [ProductsModule, CartModule],
+  //   });
+
+  //   router = TestBed.inject(Router);
+  //   location = TestBed.inject(Location);
+
+  //   router.initialNavigation();
+  // });
+
+  // xit('navigate to "**" redirects you to products', fakeAsync(() => {
+  //   const navigateSpy = spyOn(router, 'navigate');
+  //   expect(navigateSpy).toHaveBeenCalledWith(['/products']);
+  // }));
+  // xit('path "" redirects you to products', fakeAsync(() => {
+  //   const navigateSpy = spyOn(router, 'navigate');
+  //   expect(navigateSpy).toHaveBeenCalledWith(['/products']);
+  // }));
+  // xit('path "products" imports ProductsModule', fakeAsync(() => {
+  //   router.navigate(['']).then(() => {
+  //     expect(location.pathname).toBe('products');
+  //   });
+  // }));
+  // xit('path "cart" imports CartModule', fakeAsync(() => {
+  //   router.navigate(['']).then(() => {
+  //     expect(location.pathname).toBe('cart');
+  //   });
+  // }));
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  const route = ({ data: of({  }) } as any) as ActivatedRoute
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [AppComponent],
+        providers: [{ provide: ActivatedRoute, useValue: route }],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [AppComponent],
-      providers: [ProductsModule, CartModule],
-    });
-
-    router = TestBed.inject(Router);
-    location = TestBed.inject(Location);
-
-    router.initialNavigation();
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
-  xit('navigate to "**" redirects you to products', fakeAsync(() => {
-    const navigateSpy = spyOn(router, 'navigate');
-    expect(navigateSpy).toHaveBeenCalledWith(['/products']);
-  }));
-  xit('path "" redirects you to products', fakeAsync(() => {
-    const navigateSpy = spyOn(router, 'navigate');
-    expect(navigateSpy).toHaveBeenCalledWith(['/products']);
-  }));
-  xit('path "products" imports ProductsModule', fakeAsync(() => {
-    router.navigate(['']).then(() => {
-      expect(location.pathname).toBe('products');
-    });
-  }));
-  xit('path "cart" imports CartModule', fakeAsync(() => {
-    router.navigate(['']).then(() => {
-      expect(location.pathname).toBe('cart');
-    });
-  }));
+  xit('the path should be', () => {
+    expect(component).toEqual('products');
+  });
 });
+

@@ -119,13 +119,15 @@ describe('[Moдуль 5] Один продукт', () => {
     expect(starRatingComponent).toBeTruthy();
   });
 
-  xit('проверка на правильное значение поля feedback-rate', () => {
+  it('проверка на правильное значение поля feedback-rate', () => {
     (component as any).product$ = of(product);
-    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
     const feedbackRateEL = fixture.debugElement.query(By.css('.feedback-rate'));
-    expect(feedbackRateEL).toBeTruthy();
-    // const { rateControl } = product;
-    // const [{ nativeNode: titleNode }] = feedbackRateEL.childNodes;
-    // expect(titleNode.textContent.trim()).toEqual(rateControl);
+      expect(feedbackRateEL).toBeTruthy();
+      const { rating } = product;
+      const [{ nativeNode: titleNode }] = feedbackRateEL.childNodes;
+      expect(titleNode.textContent.trim()).toEqual(rating);
+    })
   });
 });

@@ -5,21 +5,25 @@ import { BASE_URL_TOKEN } from '../../config';
 import { environment } from 'projects/module5/src/environments/environment.prod';
 import { InterceptorService } from '../../shared/services/interceptor.service';
 import { ProductsComponent } from './products.component';
-import { ActivatedRoute } from '@angular/router';
 
 describe('[Moдуль 5] Products компонент', () => {
   let fixture: ComponentFixture<ProductsComponent>;
   let component: ProductsComponent;
-//   const fakeActivatedRoute = {
-//     snapshot: { data: {  } }
-//   } as ActivatedRoute;
+  // const fakeActivatedRoute = {
+  //   snapshot: { data: {  } }
+  // } as ActivatedRoute;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ProductsComponent],
       imports: [HttpClientModule],
       providers: [
         ProductsService,
-        ActivatedRoute,
+        // {
+        //   provide: ActivatedRoute,
+        //   useValue: {
+        //   params: Observable.arguments({  })
+        //   }
+        // },
         {
           provide: BASE_URL_TOKEN,
           useValue: environment.baseUrl,
@@ -30,7 +34,7 @@ describe('[Moдуль 5] Products компонент', () => {
           multi: true,
         },
       ],
-    }).compileComponents();;
+    }).compileComponents();
     fixture = TestBed.createComponent(ProductsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
