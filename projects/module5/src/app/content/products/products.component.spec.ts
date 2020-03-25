@@ -5,25 +5,17 @@ import { BASE_URL_TOKEN } from '../../config';
 import { environment } from 'projects/module5/src/environments/environment.prod';
 import { InterceptorService } from '../../shared/services/interceptor.service';
 import { ProductsComponent } from './products.component';
+import { RouterModule } from '@angular/router';
 
 describe('[Moдуль 5] Products компонент', () => {
   let fixture: ComponentFixture<ProductsComponent>;
   let component: ProductsComponent;
-  // const fakeActivatedRoute = {
-  //   snapshot: { data: {  } }
-  // } as ActivatedRoute;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ProductsComponent],
-      imports: [HttpClientModule],
+      imports: [HttpClientModule,  RouterModule.forRoot([]),],
       providers: [
         ProductsService,
-        // {
-        //   provide: ActivatedRoute,
-        //   useValue: {
-        //   params: Observable.arguments({  })
-        //   }
-        // },
         {
           provide: BASE_URL_TOKEN,
           useValue: environment.baseUrl,
@@ -39,16 +31,17 @@ describe('[Moдуль 5] Products компонент', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
-  xit('свойство products должно быть определено', () => {
+  it('свойство products должно быть определено', () => {
     expect((component as any)?.products).toBeDefined();
   });
-  xit('компонент должен иметь метод addProduct', () => {
+  it('компонент должен иметь метод addProduct', () => {
     expect((component as any)?.addProduct).toBeTruthy();
   });
-  xit('свойство productsService должно быть определено', () => {
+  it('свойство productsService должно быть определено', () => {
     expect((component as any)?.productsService).toBeDefined();
   });
-  xit('свойство pageSequence должно быть определено', () => {
-    expect((component as any)?.pageSequence).toBeDefined();
+  it('свойство pageSequence должно быть определено', () => {
+    fixture.autoDetectChanges();
+    expect((component as any).pageSequence$$).toBeDefined();
   });
 });
