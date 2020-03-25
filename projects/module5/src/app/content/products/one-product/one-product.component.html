@@ -1,4 +1,4 @@
-<div *ngIf="product$ | async as product" class="container one-product-wrap">
+<div class="container one-product-wrap">
   <div class="title">
     <a class="product-title"></a>
   </div>
@@ -12,7 +12,7 @@
               <mat-icon class="btn-icon"></mat-icon>
             </button>
           </div>
-          <app-star-rating [rate]="product.rating"></app-star-rating>
+          <app-star-rating></app-star-rating>
         </div>
         <div class="main-cont-description">
           <div class="main-cont-description-descr">
