@@ -1,11 +1,15 @@
 ## Модуль 3: Cервисы и Http протокол
 
+В данном модуле вы познакомитесь с сервисами, интерсепторами и Http протоколом.
+Для этого вам необходимо ознакомиться с документацией.
+Также вы можете ознакомиться со скринкастами по данной теме.
+
 Документация
 
 - [Создание сервиса](https://angular.io/tutorial/toh-pt4)
 - [Сервисы и dependency injection](https://angular.io/guide/architecture-services)
 - [HttpClient](https://angular.io/guide/http)
-- [Получениен данных с сервера и HTTP interceptors](https://angular.io/tutorial/toh-pt6)
+- [Получение данных с сервера и HTTP interceptors](https://angular.io/tutorial/toh-pt6)
 
 Скринкасты
 
