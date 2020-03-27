@@ -13,9 +13,11 @@ import { environment } from '../environments/environment';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './interceptor.service';
 import { CommonModule } from '@angular/common';
+import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.component';
 
 @NgModule({
-  declarations: [AppComponent, StarRatingComponent, CardComponent, ImgUrlPipe],
+  declarations: [AppComponent, StarRatingComponent, CardComponent, ImgUrlPipe, InfiniteScrollComponent],
+  exports: [InfiniteScrollComponent],
   imports: [BrowserModule, BrowserAnimationsModule, MatIconModule, HttpClientModule, CommonModule],
   providers: [
     ProductsService,
