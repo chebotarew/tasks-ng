@@ -10,7 +10,7 @@ export class AppComponent {
   product: IProduct = product
   chosenProduct!: IProduct
 
-  addProduct(product: any){
+  addProduct(product: IProduct){
     this.chosenProduct = product
   }
   get ch (){

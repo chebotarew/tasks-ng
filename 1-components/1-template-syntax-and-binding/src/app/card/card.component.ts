@@ -12,7 +12,7 @@ export class CardComponent {
   @Output()
   addToCart: EventEmitter<IProduct> = new EventEmitter<IProduct>()
 
-  addProduct(product: IProduct){
-    this.addToCart.emit(product)
+  addProduct(){
+    this.addToCart.emit(this.product)
   }
 }
