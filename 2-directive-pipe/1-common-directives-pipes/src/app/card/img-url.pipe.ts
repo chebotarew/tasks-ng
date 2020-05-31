@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'imgUrl',
 })
 export class ImgUrlPipe implements PipeTransform {
-  transform(): string {
-    return ``;
+  transform(value: any): string {
+    return value[0].url;
   }
 }
