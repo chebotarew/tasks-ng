@@ -10,13 +10,16 @@ import { StarRatingComponent } from './card/star-rating/star-rating.component';
 import { ImgUrlPipe } from './card/img-url.pipe';
 import { BASE_URL_TOKEN } from './config';
 import { environment } from '../environments/environment';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule,
+  HTTP_INTERCEPTORS
+} from '@angular/common/http';
 import { InterceptorService } from './interceptor.service';
 import { CommonModule } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [AppComponent, StarRatingComponent, CardComponent, ImgUrlPipe],
-  imports: [BrowserModule, BrowserAnimationsModule, MatIconModule, HttpClientModule, CommonModule],
+  imports: [BrowserModule, BrowserAnimationsModule, MatIconModule, HttpClientModule, CommonModule, MatProgressSpinnerModule],
   providers: [
     ProductsService,
     {

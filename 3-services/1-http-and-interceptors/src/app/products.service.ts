@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 export interface IProduct {
   _id: string;
   name: string;
@@ -24,5 +26,11 @@ export interface IProductImage {
 }
 
 @Injectable()
-export class ProductsService {}
+export class ProductsService {
+  constructor(private httpClient: HttpClient) {
+  }
+  public getProducts(): Observable<IProduct[]>{
+    return this.httpClient.get<IProduct[]>(`/products`);
+  }
+}
 

@@ -66,12 +66,22 @@
       />
     </svg>
   </div>
-  
+
   <div class="content-wrap products-wrap">
     <div class="content-block products">
-      <div class="product">
-        <app-shop-card> </app-shop-card>
+      <div *ngIf="products$ | async as products">
+        <div class="product" *ngFor="let product of products">
+          <app-shop-card [product]="product" (addToCart)="addProduct()"> </app-shop-card>
+        </div>
       </div>
     </div>
   </div>
+
 </div>
+
+
+<ng-template #loader>
+  <div class="loader-container">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

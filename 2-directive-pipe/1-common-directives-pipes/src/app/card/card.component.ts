@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { IProduct } from '../../mocks/products';
+import { IProduct } from 'z';
 
 @Component({
   selector: 'app-shop-card',
