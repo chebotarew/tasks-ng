@@ -71,13 +71,16 @@
 
   <!-- Content -->
   <div class="content-wrap">
-    <app-feedback-form class="content-block"></app-feedback-form>
+    <app-feedback-form class="content-block" (createFeedback)="save($event)"></app-feedback-form>
 
-    <div class="feedbacks">
+    <div class="feedbacks" *ngIf="feedback; else noFeedbacks">
       <div>
-        <app-feedback-card></app-feedback-card>
+        <app-feedback-card [feedback]="feedback"></app-feedback-card>
       </div>
     </div>
-    <div class="no-feedbacks"><span>No feedbacks yet</span></div>
   </div>
 </div>
+
+<ng-template #noFeedbacks>
+  <div class="no-feedbacks"><span>No feedbacks yet</span></div>
+</ng-template>
